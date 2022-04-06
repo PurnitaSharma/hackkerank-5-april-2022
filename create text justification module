@@ -1,0 +1,39 @@
+l=int(input())
+str1=input()
+lines=[]
+line=''
+
+str2=str1.split() #split the sentence
+n=len(str1) #no of characters in string 1
+#print(str2)
+for i in str2:
+    #print(i)
+    if(len(line)+len(i)+1>l):
+        lines.append(line.lstrip())
+        line=i
+    else:
+        line=line+' '+i
+if line!='':
+    lines.append(line.lstrip())
+#print(lines)    
+    
+ #space adjustment 
+
+j_lines=[]
+for line in lines:
+    s=l-len(line)
+    space_word=s//(len(line.split())-1)
+    left=s%(len(line.split())-1)
+    j_line=''
+    for c in line:
+        if c==' ':
+            j_line+=' '+' '*space_word
+            if left>0:
+                j_line+=' '
+                left-=1
+        else:
+            j_line+=c
+    j_lines.append(j_line)
+for x in j_lines:
+    print(x)
+        
